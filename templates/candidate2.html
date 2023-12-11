@@ -3,7 +3,7 @@
   <head>
     <title>投票サイト</title>
     <meta property="og:title" content="Trustworthy Enlightened Wallaby" />
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width,initial-scale=0.5">
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -30,7 +30,10 @@
       }
     </style>
 <style>
-      .home-container {
+.home-text1{
+  text-align: center;
+}
+.home-container {
   width: 100%;
   display: flex;
   overflow: auto;
@@ -46,7 +49,7 @@
   align-items: flex-start;
   justify-content: flex-start;
 }
-.home-text {
+.home-text{
   color: var(--dl-color-gray-black);
   width: 1200px;
   height: 51px;
@@ -56,16 +59,22 @@
   text-transform: capitalize;
   background-color: rgb(255, 255, 255);
 }
+.home-text1 {
+  text-align: center;
+}
 .home-container2 {
-  flex: 0 0 auto;
-  width: auto;
-  height: 701px;
+  width:1000px;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.home-container2 img {
+  width: 400px;
+  height:500px;
+  padding-right: 50px;
 }
 .home-image {
   width: 562px;
+  max-width:100%;
   height: 701px;
   object-fit: cover;
   padding-left: 10px;
@@ -74,23 +83,9 @@
   width: 634px;
   height: 100%;
   object-fit: cover;
+  display: flex;
   padding-left: 100px;
   padding-right: 10px;
-}
-.home-container3 {
-  flex: 0 0 auto;
-  width: 100%;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
-  height: 100px;
-  display: flex;
-  align-items: flex-start;
-}
-.home-container4 {
-  width: 100%;
-  border: 2px dashed rgba(120, 120, 120, 0.4);
-  height: 649px;
-  display: flex;
-  align-items: flex-start;
 }
 </style>
     <link
@@ -124,20 +119,17 @@
       <div class="home-container">
         <div class="home-container1">
           <h1 class="home-text">
-            <span>候補者一覧</span>
+            <span class="home-text1">候補者一覧</span>
             <br />
           </h1>
         </div>
         <div class="home-container2">
           <a href="/candidate_naiyo1">
-            <img src="images/politician.jpg" alt="image"class="home-image"/>
+            <img src="images/politician.jpg" alt="image",border="5"/>
           </a>
-          <img
-            src="images/politician.jpg"
-            alt="image"
-            class="home-image1"
-            onclick="candidtate2"
-          />
+          <a href="/candidate_naiyo1">
+            <img src="images/politician.jpg" alt="image",border="5"/>
+          </a>
         </div>
       </div>
     </div>
