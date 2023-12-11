@@ -1,0 +1,5 @@
+Flask
+Gunicorn
+flask_mysqldb
+sqlalchemy
+flask_sqlalchemy
