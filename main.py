@@ -107,6 +107,12 @@ def candidate():
     for i in a:
         vote = i.vote
     return render_template("candidate_naiyo1.html",vote=vote)
+@app.route("/candidate_naiyo2",methods=["GET","POST"])
+def candidate2():
+    a = db.session.query(Candidate).filter_by(number = 2)
+    for i in a:
+        vote = i.vote
+    return render_template("candidate_naiyo2.html",vote=vote)
 @app.route("/vote/<int:id>",methods=["GET","POST"])
 def vote(id):
     a = db.session.query(Candidate).filter_by(number = id).first()
@@ -116,9 +122,11 @@ def vote(id):
             a.vote += 1
             b.vote -= 1
             db.session.commit()
+            flash("投票しました")
         else :
             flash("投票回数の上限を超えています")
-    return redirect("/candidate_naiyo1")
+        url = "/candidate_naiyo" + str(id)
+        return redirect(url)
 
 if __name__ == "__main__":
     app.run()
