@@ -77,8 +77,11 @@ def register():
         session["email"] = email
         account = User(name=userName,email=email,password=password)
         confirm_account = User.query.filter_by(email=email).first()
+        confirm_username = User.query.filter_by(name=userName).first()
         if confirm_account:
             mesage = 'そのメールアドレスは既に存在しています'
+        elif confirm_username:
+            mesage = 'その名前は既に使用されています'
         elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
             mesage = '正しいメールアドレスを入力してください'
         elif not userName or not password or not email:
