@@ -1,5 +1,14 @@
 <html>
 <head>
+<style>
+	section.Login {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+</style>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ログインフォーム</title>
@@ -8,6 +17,7 @@
 <body>	
 <div class="container">
 	<h2>ユーザーログイン</h2>
+    <section class="Login">
 	<form action="{{ url_for('login') }}" method="post">
 	    {% if mesage is defined and mesage %}
 			<div class="alert alert-warning">{{ mesage }}</div>
@@ -23,6 +33,7 @@
 		<button type="submit" class="btn btn-primary">Login</button>
 		<p class="bottom">アカウントを持っていませんか？  <a class="bottom" href="{{url_for('register')}}"> ここから登録</a></p>
 	</form>
+    </section>
 </div>
 </body>
 </html>
