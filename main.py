@@ -54,6 +54,7 @@ def login():
             mesage = '正常にログインしました'
             session['loggedin'] = True
             session["email"] = email
+            session["username"] = user.name
             #return render_template('candidate2.html', mesage = mesage)
             return redirect("/user")
         else:
@@ -75,6 +76,7 @@ def register():
         password = request.form['password']
         email = request.form['email']
         session["email"] = email
+        session["username"] = userName
         account = User(name=userName,email=email,password=password)
         confirm_account = User.query.filter_by(email=email).first()
         confirm_username = User.query.filter_by(name=userName).first()
@@ -117,7 +119,7 @@ def candidate2():
 def vote(id):
     a = db.session.query(Candidate).filter_by(number = id).first()
     if a:
-        b = db.session.query(User).filter_by(email = session["email"]).first()
+        b = db.session.query(User).filter_by(name = session["username"]).first()
         if(b.vote > 0):
             a.vote += 1
             b.vote -= 1
