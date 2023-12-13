@@ -3,3 +3,7 @@ Gunicorn
 flask_mysqldb
 sqlalchemy
 flask_sqlalchemy
+numpy
+matplotlib
+base64
+io

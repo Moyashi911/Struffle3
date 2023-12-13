@@ -8,6 +8,11 @@ from sqlalchemy.orm import sessionmaker,DeclarativeBase
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy import Integer, String,Boolean
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
+import base64
+import io
 app = Flask(__name__,static_folder="templates/static/images")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///VotingSite.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -96,11 +101,30 @@ def register():
     elif request.method == 'POST':
         mesage = 'フォームを埋めてください'
     return render_template('register.html', mesage = mesage)
+
 @app.route("/user",methods=["GET","POST"])
 def user():
+    vote1 = 0
+    vote2 = 0
+    a = db.session.query(Candidate).filter_by(number = 1)
+    for i in a:
+        vote1= i.vote
+    b = db.session.query(Candidate).filter_by(number = 2)
+    for i in b:
+        vote2= i.vote
+    fig = plt.figure()
+    ax = fig.add_subplot()
+    x = [1, 2]
+    y = [vote1, vote2]
+    label = ["cat","dog"]
+    plt.cla()
+    plt.title('result of vote')
+    plt.bar(x, y, tick_label=label)
+    plt.legend()
+    plt.savefig("templates/static/images/sample.png")
     if(session):
        mesage = "こんにちは"
-       return render_template('candidate2.html',mesage=mesage)
+       return render_template('candidate2.html',mesage=mesage,plt=plt)
     else:
         return redirect("/login")
 @app.route("/candidate_naiyo1",methods=["GET","POST"])
