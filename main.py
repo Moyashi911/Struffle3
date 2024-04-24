@@ -155,4 +155,4 @@ def vote(id):
         return redirect(url)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0')
